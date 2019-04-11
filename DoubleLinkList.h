@@ -1,7 +1,7 @@
-// Doubly-linked list ADT
+// Doubly Linked list ADT
 
 template<typename Item>
-class DoubleLinkedList {
+class DoubleLinkList {
   private:
     // representation of node
 	struct DoubleNode
@@ -18,9 +18,9 @@ class DoubleLinkedList {
 	
   public:
 	// constructor
-	DoubleLinkedList();
+	DoubleLinkList();
 	// destructor
-	~DoubleLinkedList();
+	~DoubleLinkList();
 
 	// return whether the list is empty
 	bool isEmpty() { return N == 0; }
@@ -44,7 +44,7 @@ class DoubleLinkedList {
 
 
 template<typename Item> // the function header here is a little tricky
-typename DoubleLinkedList<Item>::DoubleNode * DoubleLinkedList<Item>::findItem(Item item) {
+typename DoubleLinkList<Item>::DoubleNode * DoubleLinkList<Item>::findItem(Item item) {
 	DoubleNode *current = first;
 	while(current!=nullptr){
 		if(current->item == item)
@@ -55,14 +55,14 @@ typename DoubleLinkedList<Item>::DoubleNode * DoubleLinkedList<Item>::findItem(I
 }
 
 template<typename Item>
-DoubleLinkedList<Item>::DoubleLinkedList() {
+DoubleLinkList<Item>::DoubleLinkList() {
 	first = nullptr;
 	last = nullptr;
 	N = 0;
 }
 
 template<typename Item>
-DoubleLinkedList<Item>::~DoubleLinkedList() {
+DoubleLinkList<Item>::~DoubleLinkList() {
 	while(first!=nullptr){
 		DoubleNode *oldfirst = first;
 		first = first->next;
@@ -73,7 +73,7 @@ DoubleLinkedList<Item>::~DoubleLinkedList() {
 
 
 template<typename Item>
-void DoubleLinkedList<Item>::push_front(Item item) {
+void DoubleLinkList<Item>::push_front(Item item) {
 	DoubleNode *oldfirst = first;
 	first = new DoubleNode();
 	first->item = item;
@@ -90,7 +90,7 @@ void DoubleLinkedList<Item>::push_front(Item item) {
 }
 
 template<typename Item>
-void DoubleLinkedList<Item>::push_back(Item item) {
+void DoubleLinkList<Item>::push_back(Item item) {
 	DoubleNode *oldlast = last;
 	last = new DoubleNode();
 	last->item = item;
@@ -107,7 +107,7 @@ void DoubleLinkedList<Item>::push_back(Item item) {
 }
 
 template<typename Item>
-Item DoubleLinkedList<Item>::pop_front() {
+Item DoubleLinkList<Item>::pop_front() {
 	DoubleNode *oldfirst = first;
 	Item item = first->item;
 	first = first->next;
@@ -121,7 +121,7 @@ Item DoubleLinkedList<Item>::pop_front() {
 }
 
 template<typename Item>
-Item DoubleLinkedList<Item>::pop_back() {
+Item DoubleLinkList<Item>::pop_back() {
 	DoubleNode *oldlast = last;
 	Item item = last->item;
 	last = last->forward;
@@ -135,7 +135,7 @@ Item DoubleLinkedList<Item>::pop_back() {
 }
 
 template<typename Item>
-void DoubleLinkedList<Item>::Insert_before(Item item, Item location) {
+void DoubleLinkList<Item>::Insert_before(Item item, Item location) {
 	DoubleNode *find = findItem(location);
 	if(find == nullptr)
 		return; // need processing
@@ -152,7 +152,7 @@ void DoubleLinkedList<Item>::Insert_before(Item item, Item location) {
 }
 
 template<typename Item>
-void DoubleLinkedList<Item>::Insert_after(Item item, Item loaction) {
+void DoubleLinkList<Item>::Insert_after(Item item, Item loaction) {
 	DoubleNode *find = findItem(loaction);
 	if(find==nullptr)
 		return; // ditto
@@ -169,7 +169,7 @@ void DoubleLinkedList<Item>::Insert_after(Item item, Item loaction) {
 }
 
 template<typename Item>
-bool DoubleLinkedList<Item>::remove(Item item) {
+bool DoubleLinkList<Item>::remove(Item item) {
 	DoubleNode *find = findItem(item);
 	if(find == nullptr)
 		return false;
