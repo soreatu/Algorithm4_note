@@ -67,6 +67,7 @@ DoubleLinkedList<Item>::~DoubleLinkedList() {
 		DoubleNode *oldfirst = first;
 		first = first->next;
 		delete first;
+		N--;
 	}
 }
 
